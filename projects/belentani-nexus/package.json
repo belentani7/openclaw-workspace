@@ -1,0 +1,12 @@
+{
+  "name": "belentani-nexus",
+  "version": "1.0.0",
+  "description": "Plataforma unificada estilo Cabina.AI/HappyTime con estética cyberpunk bélica Belentani. Integra 50+ modelos de IA (especialmente China) con sistema de créditos transparente.",
+  "main": "index.js",
+  "scripts": {
+    "mcp": "node mcp-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "module"
+}
