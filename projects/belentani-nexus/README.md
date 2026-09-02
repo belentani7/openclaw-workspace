@@ -1,282 +1,301 @@
-# BELENTANI NEXUS - Plataforma All-in-One AI
+# 🦞 BELENTANI NEXUS
 
-## 🎯 Visión
+**Ecosistema IA unificado para producción musical, visual y cinematográfica**
 
-Plataforma unificada estilo Cabina.AI/HappyTime con estética cyberpunk bélica Belentani. Integra 50+ modelos de IA (especialmente China) con sistema de créditos transparente.
-
-## 📁 Estructura del Proyecto
-
-```
-belentani-nexus/
-├── ARCHITECTURE.md          # Arquitectura completa con 35+ APIs
-├── index.html               # MVP frontend (chat multi-modelo)
-├── ZAI_PROMPTS.md           # 10 prompts para Z.AI (generar herramientas)
-├── PROMPT_TRIAGE.md         # Auditoría rápida de repos (solo lectura)
-├── PROMPT_DEEP.md           # Auditoría profunda (corrección automática)
-├── driver.ps1               # Driver PowerShell para auditoría masiva
-└── README.md                # Este archivo
-```
-
-## 🚀 Quick Start
-
-### 1. Frontend MVP
-
-Abrir `index.html` en el navegador. El MVP incluye:
-- Chat con Qwen 3.8 Max (requiere API key en el código)
-- Selector de modelos (texto, imagen, video, audio)
-- Sistema de créditos (localStorage)
-- Estética cyberpunk con starfield Three.js
-
-**Configurar API keys:**
-```javascript
-// En index.html, línea ~600
-const API_CONFIG = {
-    'qwen3.8-max': {
-        endpoint: 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions',
-        apiKey: '***', // <-- TU API KEY AQUÍ
-        model: 'qwen3.8-max'
-    }
-}
-```
-
-### 2. Generar Herramientas con Z.AI
-
-Usar los prompts en `ZAI_PROMPTS.md` para generar herramientas fullstack:
-
-1. Ir a https://z.ai
-2. Copiar uno de los 10 prompts
-3. Z.AI genera la app fullstack gratis con sandbox
-4. Deploy a Vercel/Netlify
-
-**Prompts prioritarios:**
-1. Repo Auditor Dashboard - Auditoría automática
-2. Secret Scanner - Detecta API keys expuestas
-3. README Generator - Genera READMEs profesionales
-
-### 3. Auditoría Masiva de Repos
-
-Ejecutar auditoría de los ~200 repos de GitHub:
-
-```powershell
-# Instalar Qwen Code si no lo tienes
-npm install -g @qwen-code/cli
-
-# Configurar API key
-$env:QWEN_API_KEY = "***"
-
-# Ejecutar en modo prueba (3 repos)
-.\driver.ps1 -GITHUB_USER belentani7 -MAX_REPOS 3 -DRY_RUN
-
-# Ejecutar auditoría completa
-.\driver.ps1 -GITHUB_USER belentani7
-
-# Solo fase triage (rápido)
-.\driver.ps1 -GITHUB_USER belentani7 -SKIP_DEEP
-
-# Solo fase deep (corrección)
-.\driver.ps1 -GITHUB_USER belentani7 -SKIP_TRIAGE
-```
-
-**Salida:**
-- `informes/*.md` - Informe por repo
-- `st/*.verdict` - Veredicto (OK/WARN/CRIT)
-- `st/*.changes` - Cambios realizados
-- `RESUMEN.md` - Resumen final
-- `logs/*.log` - Logs detallados
-
-## 🎨 APIs Integradas
-
-### China (Prioridad Máxima)
-
-**Texto/Code:**
-- Qwen (Alibaba) - qwen3.8-max, qwen3.8-flash ✅ Token Plan Pro
-- DeepSeek - deepseek-v3, deepseek-r1
-- GLM (Zhipu AI) - glm-4, glm-4v
-- Kimi (Moonshot AI) - moonshot-v1-128k
-- MiniMax - abab6.5-chat
-- Baichuan - Baichuan2-Turbo
-
-**Imagen:**
-- Qwen-Image (Alibaba) - qwen-image-3.0 ✅ Free quota
-- Kolors (Kuaishou) - kolors
-- ERNIE-ViL (Baidu) - ernie-vilg-v2
-
-**Video:**
-- Wan (Alibaba) - wanx-v1 ✅ Free quota
-- CogVideoX (Zhipu) - cogvideox
-- Tencent Hunyuan - hunyuan-video
-
-**Audio:**
-- CosyVoice (Alibaba) - cosyvoice-v1 ✅ Free quota
-- Fish Speech - fish-speech-1.5
-- Volcano TTS (ByteDance) - volcano-tts
-
-### Occidente (Free Tiers)
-
-**Texto:**
-- Groq - llama-3.3-70b, mixtral-8x7b
-- OpenRouter - 50+ modelos
-- Cerebras - llama-3.1-70b
-
-**Imagen:**
-- Stable Diffusion - sd3.5-large
-- Flux - flux-pro, flux-schnell
-- Ideogram - ideogram-2.0
-- Pollinations - flux ✅ GRATIS ILIMITADO
-
-**Video:**
-- Luma Dream Machine - dream-machine
-- Hailuo (MiniMax) - hailuo-video
-- PixVerse - pixverse-v2
-
-**Audio:**
-- ElevenLabs - eleven_multilingual_v2
-- Google Cloud TTS - waveNet
-- OpenAI TTS - tts-1-hd
-
-## 💰 Sistema de Créditos
-
-- **1 crédito = 1 imagen OR 1 video corto (5s) OR 1000 tokens de texto**
-- Registro gratuito: 100 créditos
-- Daily login: +5 créditos
-- Referidos: +20 créditos por usuario
-
-**Precios:**
-- Pack 100 créditos: $5
-- Pack 500 créditos: $20
-- Pack 2000 créditos: $70
-- Suscripción mensual (1000 créditos): $30/mes
-
-## 🎯 Roadmap
-
-### Fase 1: MVP (✅ Completado)
-- [x] Frontend básico con chat multi-modelo
-- [x] Integración de Qwen (Token Plan)
-- [x] Sistema de créditos básico
-- [x] Estética cyberpunk bélica
-
-### Fase 2: Imágenes y Videos (En progreso)
-- [ ] Integración de 10 APIs de imágenes
-- [ ] Integración de 5 APIs de videos
-- [ ] Galería de generaciones
-- [ ] Comparación lado a lado
-
-### Fase 3: Herramientas Z.AI (Pendiente)
-- [ ] Repo Auditor Dashboard
-- [ ] Secret Scanner Visual
-- [ ] README Generator
-- [ ] Dependency Updater
-
-### Fase 4: Auditoría Masiva (Pendiente)
-- [ ] Ejecutar driver.ps1 en 200 repos
-- [ ] Revisar informes generados
-- [ ] Merge de PRs automáticos
-- [ ] Rotar secrets expuestos
-
-### Fase 5: Backend (Futuro)
-- [ ] Node.js + Express para proxy
-- [ ] SQLite para gestión de créditos
-- [ ] Autenticación de usuarios
-- [ ] API pública
-
-## 🔧 Configuración Avanzada
-
-### Variables de Entorno
-
-```bash
-# APIs de IA
-export QWEN_API_KEY = "***"
-export DEEPSEEK_API_KEY = "***"
-export GROQ_API_KEY = "***"
-export OPENROUTER_API_KEY = "***"
-
-# GitHub
-export GITHUB_TOKEN = "***"
-
-# Base de datos (futuro)
-export DATABASE_URL = "postgresql://..."
-```
-
-### Docker (Futuro)
-
-```yaml
-version: '3.8'
-services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    environment:
-      - VITE_API_URL=http://backend:4000
-  
-  backend:
-    build: ./backend
-    ports:
-      - "4000:4000"
-    environment:
-      - QWEN_API_KEY=${QWEN_API_KEY}
-      - DATABASE_URL=${DATABASE_URL}
-  
-  db:
-    image: postgres:15
-    environment:
-      - POSTGRES_DB=belentani_nexus
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
-volumes:
-  pgdata:
-```
-
-## 📊 Métricas de Éxito
-
-### Técnicos
-- Latencia < 2s para texto
-- Latencia < 10s para imágenes
-- Uptime > 99%
-- Soporte para 50+ modelos
-
-### Negocio
-- 1000 usuarios en 3 meses
-- 10% conversión a pago
-- $5000 MRR en 6 meses
-- 4.5+ rating en Product Hunt
-
-## 🎓 Aprendizajes
-
-### Sobre Tokens y Contexto
-- Contexto grande = más tokens de input = más costo
-- Solución: usar modelos con contexto pequeño para tareas simples
-- qwen3.6-flash (32K) para tareas básicas
-- qwen3.8-max (1M) solo cuando sea necesario
-
-### Sobre Auditoría de Repos
-- Dos pasadas: triage (rápido) + deep (solo críticos)
-- Sesión fresca por repo para evitar contaminación de contexto
-- Prompt caching máximo con prefijo estático
-- Timeout por repo para evitar bloqueos
-
-## 🤝 Contribuir
-
-1. Fork el repositorio
-2. Crear rama: `git checkout -b feature/nueva-feature`
-3. Commit: `git commit -m 'Add nueva feature'`
-4. Push: `git push origin feature/nueva-feature`
-5. Pull Request
-
-## 📄 Licencia
-
-MIT License - Ver [LICENSE](LICENSE) para detalles
-
-## 📞 Contacto
-
-- **GitHub**: https://github.com/belentani7
-- **Email**: belentani7pedro@gmail.com
-- **Web**: https://belentani7.github.io/belentani_Omega/
+Creado por **Pedro Belentani** - Artista digital, productor musical y arquitecto de sistemas IA
 
 ---
 
-**BELENTANI NEXUS** - All-in-One AI Platform  
-_Cyberpunk Bélico Estética · 50+ Modelos · Sistema de Créditos Transparente_
+## 🎯 Visión
+
+Belentani Nexus es un ecosistema completo que integra **50+ APIs de IA** para crear:
+
+- 🎬 **Videos musicales automatizados** (IMAX Album Visual Factory)
+- 📸 **Sesiones de fotos cyberpunk** (Cyberpunk Extraction Engine)
+- 🎥 **Producción cinematográfica** (Judas Storyboard Orchestrator)
+- 🤖 **Multi-modelo inteligente** (Qwen Token Plan + APIs gratuitas)
+
+---
+
+## 🏗️ Arquitectura
+
+```
+belentani-nexus/
+├── api-clients/
+│   └── belentani-api.js          # Cliente unificado (50+ APIs)
+├── imax-album-engine/
+│   └── engine.js                 # Generador de videos musicales
+├── cyberpunk-extraction/
+│   └── engine.js                 # Generador de fotos cyberpunk
+├── judas-storyboard/
+│   └── orchestrator.js           # Orquestador del videoclip "Judas"
+├── components/
+│   └── duck-studio/              # Componentes modulares
+│       ├── audio-engine.js       # Motor de audio Web Audio API
+│       ├── sequencer.js          # Secuenciador de pasos
+│       └── styles.css            # Estilos cyberpunk
+├── demo.js                       # Demo interactiva
+├── package.json
+└── .env.example                  # Configuración de APIs
+```
+
+---
+
+## 🚀 Instalación
+
+```bash
+# 1. Clonar repositorio
+git clone https://github.com/belentani7/belentani-nexus.git
+cd belentani-nexus
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Configurar API keys
+cp .env.example .env
+# Editar .env con tus keys
+
+# 4. Ejecutar demo
+npm run demo
+```
+
+---
+
+## 🎬 Proyectos
+
+### 1. **Judas - Videoclip Cyberpunk**
+
+Producción completa del videoclip "Judas" usando IA:
+
+```bash
+npm run judas
+```
+
+**Proceso:**
+1. Análisis de la canción (estructura, letra, mood)
+2. Generación de concepto visual cinematográfico
+3. Storyboard detallado (8-12 escenas)
+4. Generación de assets visuales (fotos cyberpunk)
+5. Producción de video musical completo
+6. Material promocional (posters, thumbnails, social media)
+
+**Resultado:** Video musical + 50+ assets visuales + material promo
+
+---
+
+### 2. **IMAX Album Visual Factory**
+
+Convierte canciones en videos musicales automatizados:
+
+```bash
+npm run imax
+```
+
+**Características:**
+- Análisis automático de estructura musical
+- Generación de storyboard por escena
+- Keyframes con IA (Flux Pro)
+- Animación de keyframes (MiniMax/Hailuo)
+- Sincronización con audio
+- Exportación en 4K
+
+**APIs utilizadas:**
+- Qwen (concepto y storyboard)
+- Gemini (descripciones visuales)
+- Fal.ai (generación de imágenes)
+- MiniMax (animación de videos)
+
+---
+
+### 3. **Cyberpunk Extraction Engine**
+
+Genera sesiones de fotos cyberpunk completas:
+
+```bash
+npm run cyberpunk
+```
+
+**Características:**
+- 5 estilos cyberpunk (neon, dystopian, retro, minimal, glitch)
+- Conceptos únicos por foto
+- Prompts cinematográficos profesionales
+- Generación con Flux Pro
+- Metadata detallada (prompts, conceptos, URLs)
+
+**Estilos disponibles:**
+- `neon` - Neón brillante, luces de colores
+- `dystopian` - Distópico, industrial, oscuro
+- `retro` - Retrofuturista, años 80, synthwave
+- `minimal` - Minimalista, limpio, futurista
+- `glitch` - Glitch art, distorsión digital
+
+---
+
+## 🤖 APIs Soportadas
+
+### **Texto/Chat (50+ modelos)**
+
+| Provider | Modelos | Costo | Velocidad |
+|----------|---------|-------|-----------|
+| **Qwen** (Token Plan) | qwen-plus, qwen-max | Incluido | Rápido |
+| **Gemini** | gemini-2.0-flash, gemini-1.5-pro | Gratis | Muy rápido |
+| **Groq** | llama-3.3-70b, mixtral-8x7b | Gratis | Ultra rápido |
+| **Z.AI** | glm-4-plus, glm-4v-plus | Gratis | Rápido |
+| **SiliconFlow** | Qwen2.5-72B, DeepSeek-V3 | Gratis | Rápido |
+| **Pollinations** | openai, mistral | Gratis | Medio |
+
+### **Imagen**
+
+| Provider | Modelos | Costo | Calidad |
+|----------|---------|-------|---------|
+| **Fal.ai** | Flux Pro, Flux Dev | Gratis con límites | Excelente |
+| **Stability** | SDXL 1.0, SD3 | Pago | Profesional |
+| **Replicate** | SDXL, Flux | Pago | Variable |
+
+### **Video**
+
+| Provider | Modelos | Costo | Duración |
+|----------|---------|-------|----------|
+| **MiniMax** | video-01 (Hailuo) | Gratis con límites | 6s |
+| **Luma** | Dream Machine | Pago | 5s |
+| **Kling** | Kling 1.5 | Pago | 10s |
+
+---
+
+## 💰 Optimización de Costos
+
+**Estrategia de ruteo inteligente:**
+
+```javascript
+// 90% tareas → APIs gratuitas (Gemini, Groq, Pollinations)
+// 10% tareas críticas → Token Plan (Qwen)
+// Resultado: ~€0/mes en costos adicionales
+```
+
+**Prioridades:**
+1. **Qwen Token Plan** (ya pagado, usar al máximo)
+2. **Gemini** (gratis, muy potente)
+3. **Groq** (gratis, ultra rápido)
+4. **Pollinations** (gratis, sin API key)
+5. **APIs de pago** (solo cuando sea necesario)
+
+---
+
+## 🎨 Estética
+
+**Cyberpunk Cinematográfico:**
+- Paleta: Neón (verde, morado, cyan) sobre negro
+- Referencias: Blade Runner 2049, Ghost in the Shell, Akira
+- Mood: Oscuro, emocional, futurista
+- Tipografía: JetBrains Mono, Inter
+
+---
+
+## 📦 Componentes Modulares
+
+### **Duck Studio OS**
+
+Estudio de producción musical local con IA:
+
+```javascript
+const { DuckAudioEngine } = require('./components/duck-studio/audio-engine');
+const { DuckSequencer } = require('./components/duck-studio/sequencer');
+
+// Motor de audio con cadena de efectos
+const engine = new DuckAudioEngine();
+engine.init();
+engine.selectMic(0); // U87 Condenser
+
+// Secuenciador de pasos
+const seq = new DuckSequencer(engine);
+seq.setBpm(140);
+seq.toggle();
+```
+
+**Características:**
+- 8 micrófonos simulados (U87, SM7B, AKG C414, etc.)
+- Cadena de efectos profesional (compresor, reverb, delay, saturación)
+- Secuenciador de 16 pasos con 5 instrumentos
+- Exportación WAV
+- Grabación de takes
+
+---
+
+## 🔧 Configuración
+
+### **Variables de Entorno (.env)**
+
+```bash
+# APIs gratuitas (recomendadas)
+GEMINI_API_KEY=***
+GROQ_API_KEY=***
+ZAI_API_KEY=***
+SILICON_API_KEY=***
+
+# Token Plan (prioritario)
+DASHSCOPE_API_KEY=***
+
+# Imagen
+FAL_KEY=***
+STABILITY_API_KEY=***
+
+# Video
+MINIMAX_API_KEY=***
+LUMA_API_KEY=***
+```
+
+### **Obtener API Keys**
+
+1. **Gemini**: https://makersuite.google.com/app/apikey
+2. **Groq**: https://console.groq.com/keys
+3. **Z.AI**: https://open.bigmodel.cn/
+4. **SiliconFlow**: https://cloud.siliconflow.cn/
+5. **DashScope**: https://dashscope.console.aliyun.com/
+6. **Fal.ai**: https://fal.ai/dashboard/keys
+
+---
+
+## 📊 Métricas
+
+**Proyectos completados:**
+- ✅ Belentani Nexus (este repositorio)
+- ✅ IMAX Album Visual Factory
+- ✅ Cyberpunk Extraction Engine
+- ✅ Judas Storyboard Orchestrator
+- ✅ Duck Studio OS (componentes modulares)
+
+**APIs integradas:** 50+
+**Modelos disponibles:** 100+
+**Costo mensual:** ~€0 (optimizado)
+
+---
+
+## 🎓 Documentación
+
+- [API Reference](./docs/API_REFERENCE.md)
+- [IMAX Engine Guide](./imax-album-engine/README.md)
+- [Cyberpunk Extraction Guide](./cyberpunk-extraction/README.md)
+- [Judas Production Guide](./judas-storyboard/README.md)
+
+---
+
+## 🌐 Ecosistema Belentani
+
+- **Belentani Portal**: https://belentani7.github.io
+- **GitHub**: https://github.com/belentani7
+- **Manos Abiertas**: Plataforma educativa para migrantes
+- **Judas Experience**: 36M+ streams
+
+---
+
+## 📝 Licencia
+
+MIT © Pedro Belentani
+
+---
+
+## 🦞 Créditos
+
+Creado con pasión por **Pedro Belentani** - Barcelona, 2026
+
+*Construyendo el legado digital del arte cyberpunk*
